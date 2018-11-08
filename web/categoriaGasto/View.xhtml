@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CategoriaGastoViewDlg" widgetVar="CategoriaGastoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCategoriaGastoTitle}">
+            <h:form id="CategoriaGastoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{categoriaGastoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCategoriaGastoLabel_id}"/>
+                        <h:outputText value="#{categoriaGastoController.selected.id}" title="#{bundle.ViewCategoriaGastoTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewCategoriaGastoLabel_nombre}"/>
+                        <h:outputText value="#{categoriaGastoController.selected.nombre}" title="#{bundle.ViewCategoriaGastoTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewCategoriaGastoLabel_idUsuario}"/>
+                        <h:outputText value="#{categoriaGastoController.selected.idUsuario}" title="#{bundle.ViewCategoriaGastoTitle_idUsuario}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CategoriaGastoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

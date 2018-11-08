@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+  <Resource id="gastosDB" type="javax.sql.DataSource">#Sun Nov 04 08:41:45 COT 2018
+jdbcDriver=com.mysql.jdbc.Driver
+password=leiva
+userName=root
+jdbcUrl=jdbc\:mysql\://localhost\:3306/gastosDB?zeroDateTimeBehavior\=convertToNull
+</Resource>
+</resources>

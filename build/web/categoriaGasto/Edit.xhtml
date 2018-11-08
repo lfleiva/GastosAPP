@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CategoriaGastoEditDlg" widgetVar="CategoriaGastoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCategoriaGastoTitle}">
+            <h:form id="CategoriaGastoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{categoriaGastoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCategoriaGastoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{categoriaGastoController.selected.id}" title="#{bundle.EditCategoriaGastoTitle_id}" required="true" requiredMessage="#{bundle.EditCategoriaGastoRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditCategoriaGastoLabel_nombre}" for="nombre" />
+                        <p:inputText id="nombre" value="#{categoriaGastoController.selected.nombre}" title="#{bundle.EditCategoriaGastoTitle_nombre}" required="true" requiredMessage="#{bundle.EditCategoriaGastoRequiredMessage_nombre}"/>
+                        <p:outputLabel value="#{bundle.EditCategoriaGastoLabel_idUsuario}" for="idUsuario" />
+                        <p:selectOneMenu id="idUsuario" value="#{categoriaGastoController.selected.idUsuario}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"
+                                           var="idUsuarioItem"
+                                           itemValue="#{idUsuarioItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{categoriaGastoController.update}" value="#{bundle.Save}" update="display,:CategoriaGastoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CategoriaGastoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CategoriaGastoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
